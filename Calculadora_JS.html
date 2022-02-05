@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calculadora em JavaScript</title>
+</head>
+
+<body>
+	<script type="text/javascript">
+		function novaOperacao() {
+			let opcao = prompt('Deseja fazer outra operação?\n 1 - Sim\n 2 - Não');
+
+			if (opcao == 1) {
+		    	calculadora();
+	    	} else if (opcao == 2) {
+				alert('Até logo!')
+			} else {
+			    alert('Digite uma opção válida!')
+				novaOperacao();
+			}
+		}
+		function calculadora() {
+			const operacao = Number(prompt('Escolha uma operação matemática:\n 1 - Soma\n 2 - Subtração\n 3 - Multiplicação\n 4 - Divisão Real\n 5 - Divisão Inteira\n 6 - Potenciação\n 7 - Raiz Quadrada'));
+
+			if (!operacao || operacao >= 8) {
+				alert('Erro - operação inválida!');
+				calculadora();
+			} else {
+				if (operacao == 7) {
+				   	let n1 = Number(prompt('Digite o número:'));
+					function raizQuadrada() {
+						resultado = Math.sqrt(n1);
+						alert(`A raiz quadrada do número ${n1} é igual a ${resultado.toFixed(3)}`)
+					    novaOperacao();
+					}
+				} else {
+					let n1 = Number(prompt('Digite o primeiro número:'));
+					let n2 = Number(prompt('Digite o segundo número:'));
+					let resultado;
+					
+					if (!n1 || !n2) {
+						alert('Erro - parâmetros inválidos!');
+						calculadora();
+					} else {
+						function soma() {
+							resultado = n1 + n2;
+							alert(`${n1} + ${n2} = ${resultado}`)
+							novaOperacao();
+						}
+						function subtracao() {
+							resultado = n1 - n2;
+							alert(`${n1} - ${n2} = ${resultado}`)
+							novaOperacao();
+						}
+						function multiplicacao() {
+							resultado = n1 * n2;
+							alert(`${n1} * ${n2} = ${resultado.toFixed(2)}`)
+							novaOperacao();
+						}
+						function divisaoReal() {
+							resultado = n1 / n2;
+							alert(`${n1} / ${n2} = ${resultado.toFixed(2)}`)
+							novaOperacao();
+						}
+						function divisaoInteira() {
+							resultado = n1 % n2;
+							alert(`O resto da divisão entre ${n1} e ${n2} é igual a ${resultado}`)
+							novaOperacao();
+						}
+						function potenciacao() {
+							resultado = n1 ** n2;
+							alert(`${n1} elevado a ${n2}ª é igual a ${resultado}`)
+							novaOperacao();
+						}
+					}
+				}
+				switch (operacao) {
+					case 1:
+						soma();
+						break;
+					case 2:
+						subtracao();
+						break;
+					case 3:
+						multiplicacao();
+						break;
+					case 4:
+						divisaoReal();
+						break;
+					case 5:
+						divisaoInteira();
+						break;
+					case 6:
+						potenciacao();
+						break;
+					case 7:
+						raizQuadrada();
+						break;
+				}
+			}
+		}
+		calculadora();	
+	</script>
+</body>
+</html>
